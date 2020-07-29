@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacman Demo</title>
+    <style type="text/css">
+    	body{
+
+            background-color: black;
+    	}
+        div#world{
+            position:relative;
+        }
+
+        
+        div.row div{
+            width: 20px;
+            height: 20px;
+         /*   border:1px solid black;*/
+            display: inline-block;
+
+        }
+        div.brick{
+            background-color: blue;
+        }
+        div empty{
+        	
+        }
+        div.coin{
+            background: url("coins.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+        }
+        div#pacman{
+            background: url("pacman.gif") no-repeat center;
+            background-size: cover;
+            width:20px;
+            height:20px;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <div id='world'></div>
+        <div id="pacman" style="top:29px;left:29px;"></div>
+    </div>
+  
+<!-- /*instead of hardcoding the styles we are going to do it programmitcally*/
+	<div class='row'>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+	</div>
+	<div class='row'>
+		<div class='brick'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='pacman'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='brick'></div>
+	</div>
+	<div class='row'>
+		<div class='brick'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='empty'></div>
+		<div class='empty'></div>
+		<div class='empty'></div>
+		<div class='coin'></div>
+		<div class='brick'></div>
+	</div>
+	<div class='row'>
+		<div class='brick'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='coin'></div>
+		<div class='brick'></div>
+    </div>
+    <div class='row'>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+		<div class='brick'></div>
+    </div>
+     -->
+    <script>
+        var world=[
+            [2,2,2,2,2,2,2,2,2,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,1,1,2],
+            [2,1,1,1,1,1,1,2,1,2],
+            [2,1,1,2,2,2,1,2,1,2],
+            [2,1,1,2,1,2,1,2,1,2],
+            [2,1,1,2,1,2,2,2,1,2],
+            [2,1,1,2,1,1,1,1,1,2],
+            [2,2,2,2,2,2,2,2,2,2]
+        ];
+        
+        function displayWorld(){
+            var output ='';
+            for(var i=0; i< world.length; i++){
+               output+="\n<div class='row'>\n";
+                for(var j=0; j< world[i].length; j++){
+                    //output = output + world[i][j];
+                    if(world[i][j]==2){
+                        output+="<div class='brick'></div>";
+                    }
+                    if(world[i][j]==1){
+                        output+="<div class='coin'></div>";
+                    }
+                    if(world[i][j]==0){
+                        output+="<div class='empty'></div>";
+                    } 
+                   //console.log("in here"+output);
+
+                }
+                output+="\n</div>";
+            }
+            console.log(output);
+            document.getElementById('world').innerHTML=output;
+        }
+        displayWorld();
+    </script>
+</body>
+</html>
